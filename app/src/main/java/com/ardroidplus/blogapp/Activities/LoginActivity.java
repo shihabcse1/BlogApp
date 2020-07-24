@@ -17,11 +17,23 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
     private ImageView imageViewLogin;
     private EditText userMail, userPassword;
     private Button buttonLogin;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user != null){
+            //user is already connected so we need to redirect him to homepage
+            updateUI();
+        }
+    }
+
     private ProgressBar progressBarLogin;
 
     private FirebaseAuth mAuth;
@@ -34,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
-        HomeActivity = new Intent(this, com.ardroidplus.blogapp.Activities.HomeActivity.class);
+        HomeActivity = new Intent(this, com.ardroidplus.blogapp.Activities.Home.class);
 
         imageViewLogin = findViewById(R.id.imageView_login);
         userMail = findViewById(R.id.editText_user_mail);
@@ -44,6 +56,15 @@ public class LoginActivity extends AppCompatActivity {
 
         buttonLogin.setVisibility(View.VISIBLE);
         progressBarLogin.setVisibility(View.INVISIBLE);
+
+        imageViewLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent registerActivity = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(registerActivity);
+                finish();
+            }
+        });
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +77,11 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (mail.isEmpty() || password.isEmpty()) {
                     showMessage("Please Verify all fields");
+                    buttonLogin.setVisibility(View.VISIBLE);
+                    progressBarLogin.setVisibility(View.INVISIBLE);
                 } else {
+                    buttonLogin.setVisibility(View.INVISIBLE);
+                    progressBarLogin.setVisibility(View.VISIBLE);
                     signIn(mail, password);
                 }
             }
@@ -78,6 +103,8 @@ public class LoginActivity extends AppCompatActivity {
                             updateUI();
                         } else {
                             showMessage(task.getException().getMessage());
+                            buttonLogin.setVisibility(View.VISIBLE);
+                            progressBarLogin.setVisibility(View.INVISIBLE);
                         }
                     }
                 });

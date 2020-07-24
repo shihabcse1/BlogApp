@@ -9,6 +9,8 @@
 
     <ImageView
         android:id="@+id/imageView_login"
+        android:background="@drawable/reg_photo_style"
+        android:elevation="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -24,7 +26,7 @@
 
     <EditText
         android:id="@+id/editText_user_mail"
-        android:layout_width="265dp"
+        android:layout_width="275dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -34,6 +36,7 @@
         android:background="@drawable/reg_edittext_style"
         android:ems="10"
         android:hint="Mail"
+        android:elevation="4dp"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +51,8 @@
 
     <EditText
         android:id="@+id/editText_user_password"
-        android:layout_width="265dp"
+        android:elevation="4dp"
+        android:layout_width="275dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
