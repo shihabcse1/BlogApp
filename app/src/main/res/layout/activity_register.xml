@@ -10,7 +10,6 @@
     <ImageView
         android:id="@+id/imageViewUserRegistration"
         android:background="@drawable/reg_photo_style"
-        android:elevation="5dp"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:scaleType="fitXY"
@@ -35,7 +34,6 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName"
-        android:elevation="4dp"
         android:background="@drawable/reg_edittext_style"
         android:hint="@string/name"
         android:layout_width="265dp"
@@ -53,7 +51,6 @@
 
     <EditText
         android:id="@+id/editTextTextPersonMail"
-        android:elevation="4dp"
         android:background="@drawable/reg_edittext_style"
         android:hint="@string/mail"
         android:layout_width="265dp"
@@ -72,7 +69,6 @@
 
     <EditText
         android:id="@+id/editTextPassword"
-        android:elevation="4dp"
         android:background="@drawable/reg_edittext_style"
         android:hint="@string/password"
         android:layout_width="265dp"
@@ -91,7 +87,6 @@
 
     <EditText
         android:id="@+id/editTextTextPassword2"
-        android:elevation="4dp"
         android:background="@drawable/reg_edittext_style"
         android:hint="@string/confirm_password"
         android:layout_width="265dp"
